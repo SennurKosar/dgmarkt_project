@@ -1,7 +1,7 @@
 package com.dgMarkt.pages.category;
 
 import com.dgMarkt.pages.BasePage;
-import com.dgMarkt.utilities.BrowserUtils;
+import static com.dgMarkt.utilities.BrowserUtils.*;
 import com.dgMarkt.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -33,18 +33,18 @@ public class ShoppingCheckoutPage extends BasePage {
 
 
     public String deliveryTexts(String containsText) {
-        BrowserUtils.waitFor(2);
+        waitFor(2);
         return Driver.get().findElement(By.xpath("//p[contains(text(),'" + containsText + "')]")).getText();
     }
 
     public WebElement details(String detail) {
-        BrowserUtils.waitFor(2);
+        waitFor(2);
         return Driver.get().findElement(By.id(detail));
     }
 
     public WebElement continueButtons(String id) {
         WebElement element = Driver.get().findElement(By.id(id));
-        BrowserUtils.waitFor(2);
+        waitFor(2);
         return element;
     }
 

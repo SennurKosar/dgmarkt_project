@@ -4,7 +4,6 @@ import com.dgMarkt.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import static com.dgMarkt.utilities.BrowserUtils.waitFor;
 import static org.junit.Assert.*;
 

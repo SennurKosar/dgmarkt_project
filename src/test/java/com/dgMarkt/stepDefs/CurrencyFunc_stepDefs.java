@@ -4,7 +4,7 @@ import com.dgMarkt.pages.CheckoutPage;
 import com.dgMarkt.pages.MyWishListPage;
 import com.dgMarkt.pages.category.ShoppingCartPage;
 import com.dgMarkt.pages.category.SubCategoryPage;
-import com.dgMarkt.pages.homePage.HomePage;
+import com.dgMarkt.pages.myAccount.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 
 
 public class CurrencyFunc_stepDefs {
-    HomePage homePage = new HomePage();
+    LoginPage loginPage = new LoginPage();
     SubCategoryPage subCategoryPage = new SubCategoryPage();
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     MyWishListPage myWishListPage = new MyWishListPage();
@@ -21,7 +21,7 @@ public class CurrencyFunc_stepDefs {
     @When("the user should be able to select a {string} module {string}")
     public void theUserShouldBeAbleToSelectAModule(String CurrencyModule, String currencyType) {
 
-        homePage.navigateTo(CurrencyModule, currencyType);
+        loginPage.navigateTo(CurrencyModule, currencyType);
     }
 
 

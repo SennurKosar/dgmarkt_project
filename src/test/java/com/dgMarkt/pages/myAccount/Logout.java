@@ -1,8 +1,8 @@
 package com.dgMarkt.pages.myAccount;
 
 import com.dgMarkt.pages.BasePage;
-import com.dgMarkt.utilities.BrowserUtils;
-import org.junit.Assert;
+import static com.dgMarkt.utilities.BrowserUtils.*;
+import static org.junit.Assert.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,7 +26,7 @@ public class Logout extends BasePage {
     public void verifyLogout(){
         String actualtext =logoutSuccsessMessage.getText();
         String expectedtext= "You have been logged off your account. It is now safe to leave the computer.";
-        Assert.assertTrue(actualtext.contains(expectedtext));
+        assertTrue(actualtext.contains(expectedtext));
 
         logoutContinueBtn.click();
 
@@ -34,9 +34,9 @@ public class Logout extends BasePage {
     }
 
     public void verifyNoLogin(){
-        BrowserUtils.waitFor(2);
+        waitFor(2);
         myAccountTab.click();
-        Assert.assertFalse("There is no re-Login function", BrowserUtils.getElementsText(myAccountMenu).contains("re-Login"));
+        assertFalse("There is no re-Login function", getElementsText(myAccountMenu).contains("re-Login"));
 
     }
 

@@ -1,9 +1,9 @@
 package com.dgMarkt.pages.category;
 
 import com.dgMarkt.pages.BasePage;
-import com.dgMarkt.pages.homePage.HomePage;
+import com.dgMarkt.pages.myAccount.LoginPage;
 import com.dgMarkt.utilities.Driver;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +15,7 @@ import static com.dgMarkt.utilities.BrowserUtils.*;
 
 public class ShoppingCartPage extends BasePage {
     WebDriver driver;
+    LoginPage loginPage = new LoginPage();
 
     @FindBy(xpath = "//div[@class='container-inner']/h1")
     public WebElement healthAndBeautyPage;
@@ -58,7 +59,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
     //*************************currency***********************
-    HomePage homePage=new HomePage();
+
     @FindBy(xpath = "//a[text()='Checkout']")
     public WebElement checkoutBtn;
 
@@ -69,8 +70,8 @@ public class ShoppingCartPage extends BasePage {
      */
     public void verifyingCurrencyInTheCart(String product,String category, String currency){
         waitFor(1);
-        hover(homePage.cartBtn);
-        homePage.cartBtn.click();
+        hover(loginPage.cartBtn);
+        loginPage.cartBtn.click();
 
         Driver.get().findElement(By.xpath("//strong[normalize-space()='View Cart']")).click();
 
@@ -85,7 +86,7 @@ public class ShoppingCartPage extends BasePage {
             price = Driver.get().findElement(By.xpath("//td[@class='text-left']//a[contains(text(),'"+product+"')]/../../td[5]"));
         }
 
-        Assert.assertTrue(price.getText().contains(currency));
+        assertTrue(price.getText().contains(currency));
     }
     public void clickCheckoutBtn(){
         checkoutBtn.click();

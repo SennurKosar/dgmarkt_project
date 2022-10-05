@@ -6,9 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
-
-import static com.dgMarkt.utilities.BrowserUtils.clickWithJS;
-import static com.dgMarkt.utilities.BrowserUtils.waitFor;
+import static com.dgMarkt.utilities.BrowserUtils.*;
 
 public class SearchStepDefs{
 

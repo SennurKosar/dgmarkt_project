@@ -6,8 +6,7 @@ import com.dgMarkt.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import static com.dgMarkt.utilities.BrowserUtils.waitFor;
+import static com.dgMarkt.utilities.BrowserUtils.*;
 import static org.junit.Assert.*;
 
 public class Sorting_StepDefs {

@@ -2,9 +2,7 @@ package com.dgMarkt.stepDefs;
 
 import com.dgMarkt.pages.category.PopularTagPage;
 import com.dgMarkt.pages.category.SubCategoryPage;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 

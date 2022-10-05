@@ -11,9 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class BasePage {
 
     public BasePage() {
-
         PageFactory.initElements(Driver.get(), this);
-
     }
 
     @FindBy(xpath = "//span[text()='My Account']")
@@ -52,11 +50,35 @@ public abstract class BasePage {
     @FindBy(css = ".fa.fa-share")
     public WebElement checkout_cart_loc;
 
+    @FindBy(css = "#cart")
+    public WebElement cartBtn;
+
+
+    @FindBy(xpath = "(//a[text()='My Account'])[1]")
+    public WebElement myAccountSecond;
+
+    @FindBy(xpath = "//a[text()='Password']")
+    public WebElement passwordForChange;
+
+    @FindBy(css = "#input-password")
+    public WebElement inputPassword;
+
+    @FindBy(css = "#input-confirm")
+    public WebElement inputConfirm;
+
+    @FindBy(xpath = "//input[@value='Continue']")
+    public WebElement continueButton;
+
+    @FindBy(xpath = "//div[text()=' Success: Your password has been successfully updated.']")
+    public WebElement changePswrdVrfyMsg;
+
+    @FindBy(xpath = "//div[text()='Password confirmation does not match password!']")
+    public WebElement changePswrdErrorVrfyMsg;
+
+
     /**
      * (from configuration properties)
      */
-
-
     public void loginM() {
         navigateTo("My Account", "Login");
         loginEmail.sendKeys(ConfigurationReader.get("userEmail"));
@@ -131,27 +153,6 @@ public abstract class BasePage {
         BrowserUtils.hover(Driver.get().findElement(By.xpath("//a[text()='Health & Beauty']")));
         BrowserUtils.clickWithJS(Driver.get().findElement(By.xpath("//a[text()='" + tab + "']")));
     }
-
-    @FindBy(xpath = "(//a[text()='My Account'])[1]")
-    public WebElement myAccountSecond;
-
-    @FindBy(xpath = "//a[text()='Password']")
-    public WebElement passwordForChange;
-
-    @FindBy(css = "#input-password")
-    public WebElement inputPassword;
-
-    @FindBy(css = "#input-confirm")
-    public WebElement inputConfirm;
-
-    @FindBy(xpath = "//input[@value='Continue']")
-    public WebElement continueButton;
-
-    @FindBy(xpath = "//div[text()=' Success: Your password has been successfully updated.']")
-    public WebElement changePswrdVrfyMsg;
-
-    @FindBy(xpath = "//div[text()='Password confirmation does not match password!']")
-    public WebElement changePswrdErrorVrfyMsg;
 
 
 

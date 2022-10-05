@@ -38,18 +38,4 @@ public class Hooks {
         Driver.closeDriver();
     }
 
-
-    @Before("@db")
-    public void setupDb() {
-
-
-    }
-
-    @After("@db")
-    public void closeDb() {
-
-
-    }
-
-
 }

@@ -16,6 +16,9 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//span[text()='Login']")
     public WebElement loginButton;
 
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    public WebElement warningMessageLogin;
+
     /**
      * (from feature)
      *
@@ -32,7 +35,6 @@ public class LoginPage extends BasePage {
         waitFor(1);
     }
 
-    @FindBy(xpath = "//div[@class='alert alert-danger']")
-    public WebElement warningMessageLogin;
+
 }
 

@@ -6,13 +6,9 @@ import com.dgMarkt.pages.myAccount.orderHistory.OrderInformationPage;
 import com.dgMarkt.pages.myAccount.orderHistory.ProductReturnsPage;
 import com.dgMarkt.pages.myAccount.orderHistory.ReturnInformationPage;
 import com.dgMarkt.utilities.Driver;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
-import static com.dgMarkt.utilities.BrowserUtils.getElementsText;
-import static com.dgMarkt.utilities.BrowserUtils.scrollToElement;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import io.cucumber.java.en.*;
+import static com.dgMarkt.utilities.BrowserUtils.*;
+import static org.junit.Assert.*;
 
 public class OrderHistory_StepDefs {
     String firstRowOrderId;

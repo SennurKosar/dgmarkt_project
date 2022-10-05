@@ -2,8 +2,7 @@ package com.dgMarkt.stepDefs;
 
 import com.dgMarkt.pages.category.SubCategoryPage;
 import io.cucumber.java.en.Then;
-
-import static com.dgMarkt.utilities.BrowserUtils.verifyElementDisplayed;
+import static com.dgMarkt.utilities.BrowserUtils.*;
 
 public class QuickWishListIcon_StepDefs {
     SubCategoryPage subCategoryPage=new SubCategoryPage();

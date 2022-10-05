@@ -1,11 +1,11 @@
 package com.dgMarkt.pages.myAccount;
 
 import com.dgMarkt.pages.BasePage;
-import com.dgMarkt.utilities.BrowserUtils;
+import static com.dgMarkt.utilities.BrowserUtils.*;
 import com.dgMarkt.utilities.ConfigurationReader;
 import com.dgMarkt.utilities.Driver;
 import com.github.javafaker.Faker;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,7 +38,7 @@ public class EditPage extends BasePage {
         newFirstName = faker.name().firstName();
         infoField.sendKeys(newFirstName);
         System.out.println("newFirstName = " + newFirstName);
-        BrowserUtils.waitFor(2);
+        waitFor(2);
 
 
     }
@@ -49,7 +49,7 @@ public class EditPage extends BasePage {
         newLastName = faker.name().lastName();
         infoField.sendKeys(newLastName);
         System.out.println("newLastName = " + newLastName);
-        BrowserUtils.waitFor(2);
+        waitFor(2);
 
 
     }
@@ -61,7 +61,7 @@ public class EditPage extends BasePage {
         infoField.sendKeys(newEmail);
         ConfigurationReader.set("userEmailForEdit", newEmail);
         System.out.println("newEmail = " + newEmail);
-        BrowserUtils.waitFor(2);
+        waitFor(2);
 
 
     }
@@ -72,7 +72,7 @@ public class EditPage extends BasePage {
         newTelephone = faker.phoneNumber().phoneNumber();
         infoField.sendKeys(newTelephone);
         System.out.println("newTelephone = " + newTelephone);
-        BrowserUtils.waitFor(2);
+        waitFor(2);
 
 
     }
@@ -81,15 +81,15 @@ public class EditPage extends BasePage {
         WebElement infoField = Driver.get().findElement(By.name(field));
         infoField.clear();
         infoField.sendKeys(info);
-        BrowserUtils.waitFor(2);
+        waitFor(2);
     }
 
     public void loginMforEdit() {
         navigateTo("My Account", "Login");
         loginEmail.sendKeys(ConfigurationReader.get("userEmailForEdit"));
-        BrowserUtils.waitFor(1);
+        waitFor(1);
         loginPassword.sendKeys(ConfigurationReader.get("userPasswordForEdit"));
-        BrowserUtils.waitFor(1);
+        waitFor(1);
         loginButton.click();
     }
 
@@ -100,9 +100,9 @@ public class EditPage extends BasePage {
                 || email.getAttribute("validationMessage").equals("Please include an '@' in the email address. 'zehraemirgmail.com' is missing an '@'.")
                 || email.getAttribute("validationMessage").equals("Lütfen e-posta adresine bir \"@\" işareti ekleyin. \"zehraemirgmail.com\" adresinde \"@\" eksik.");
         if (control) {
-            Assert.assertTrue(control);
+           assertTrue(control);
         } else {
-            Assert.assertTrue(errorMessage.isDisplayed());
+            assertTrue(errorMessage.isDisplayed());
         }
 
     }

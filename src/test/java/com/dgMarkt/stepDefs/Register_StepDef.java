@@ -1,10 +1,7 @@
 package com.dgMarkt.stepDefs;
 
 import com.dgMarkt.pages.myAccount.RegisterPage;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
+import io.cucumber.java.en.*;
 import static com.dgMarkt.utilities.BrowserUtils.waitFor;
 
 public class Register_StepDef {

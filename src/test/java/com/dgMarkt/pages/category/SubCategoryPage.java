@@ -12,8 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.dgMarkt.utilities.BrowserUtils.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SubCategoryPage extends BasePage {
 
@@ -25,6 +24,45 @@ public class SubCategoryPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='input-quantity']")
     public WebElement inputProductNumber;
+
+
+    @FindBy(xpath = "(//div[@id='slider-price']//span)[1]")
+    public WebElement priceRight_loc;
+
+    @FindBy(xpath = "(//div[@id='slider-price']//span)[2]")
+    public WebElement priceLeft_loc;
+
+    @FindBy(xpath = "//select[@id='input-sort']")
+    public WebElement sort_by_loc;
+
+    @FindBy(xpath = "//select[@id='input-sort']//option")
+    public List<WebElement> sort_list_loc;
+
+    @FindBy(xpath = "//select[@id='input-limit']")
+    public WebElement show_Loc;
+
+    @FindBy(xpath = "//select[@id='input-limit']//option")
+    public List<WebElement> show_List_loc;
+
+    @FindBy(xpath = "//div[@class='box-price']//p")
+    public List<WebElement> box_price_list_loc;
+
+    @FindBy(xpath = "//*[@class='button-compare']")
+    public WebElement compareBtn;
+
+    @FindBy(css = ".alert.alert-fix.alert-success.alert-dismissible")
+    public WebElement successAlertCompare;
+
+    @FindBy(className = "form-control")
+    public WebElement defaultButton;
+
+    @FindBy(xpath = "//div[@class='product-item']")
+    public List<WebElement> productList;
+
+    @FindBy(xpath = "//p[@class='price']")
+    public List<WebElement> priceList;
+
+
 
     /**
      * the user hovers from "Health & Beauty" over the product "BaByliss 3663U - Hair rollers"
@@ -41,26 +79,38 @@ public class SubCategoryPage extends BasePage {
         waitForVisibility(quickViewBtn, 3);
     }
 
+    /**
+     * Then verify that the user can browse the product "<productName>"
+     *
+     * @param productName
+     * @return
+     */
     public String textOfProductcode_met(String productName) {
         WebElement productCode_loc = Driver.get().findElement(By.xpath("//span[normalize-space()='" + productName + "']"));
         return productCode_loc.getText();
     }
 
+    /**
+     * And the user should be able select a "<product>" from any "<category>"
+     *
+     * @param productName
+     * @param category
+     */
     public void clickProduct(String productName, String category) {
         categoryMenuM(category);
         waitFor(2);
         WebElement productLoc = Driver.get().findElement(By.xpath("//div[@class='product-item']//img[@title='" + productName + "']"));
         scrollToElement(productLoc);
         productLoc.click();
-
-        /**
-         * the user clicks the icons from the quick view popup.
-         * @param buttonName buttonName options: Add to Cart
-         *                   buttonName options: Add to Wish List
-         *                   buttonName options: Compare this Product
-         */
     }
 
+    /**
+     * the user clicks the icons from the quick view popup.
+     *
+     * @param buttonName buttonName options: Add to Cart
+     *                   buttonName options: Add to Wish List
+     *                   buttonName options: Compare this Product
+     */
     public void clickButtonOnTheViewIcon(String buttonName) {
         WebElement buttonLoc = Driver.get().findElement(By.xpath("//button[text()='" + buttonName + "']"));
         buttonLoc.click();
@@ -82,29 +132,24 @@ public class SubCategoryPage extends BasePage {
         return actualText.equalsIgnoreCase(productName);
     }
 
+    /**
+     *  And the user enters "<numberProduct>" from the quick view popup
+     * @param numberProduct
+     */
     public void productNumberInput_met(String numberProduct) {
         inputProductNumber.clear();
         inputProductNumber.sendKeys(numberProduct);
         clickButtonOnTheViewIcon("Add to Cart");
     }
 
-    //********************Slider****************///
-    @FindBy(xpath = "(//div[@id='slider-price']//span)[1]")
-    public WebElement priceRight_loc;
 
-    @FindBy(xpath = "(//div[@id='slider-price']//span)[2]")
-    public WebElement priceLeft_loc;
-    @FindBy(xpath = "//select[@id='input-sort']")
-    public WebElement sort_by_loc;
-    @FindBy(xpath = "//select[@id='input-sort']//option")
-    public List<WebElement> sort_list_loc;
-    @FindBy(xpath = "//select[@id='input-limit']")
-    public WebElement show_Loc;
-    @FindBy(xpath = "//select[@id='input-limit']//option")
-    public List<WebElement> show_List_loc;
-    @FindBy(xpath = "//div[@class='box-price']//p")
-    public List<WebElement> box_price_list_loc;
-
+    /**
+     * And  the user selects the "<currencyType>" between 105  and 480 by using the Price slider
+     * @param currency
+     * @param down
+     * @param top
+     * @throws InterruptedException
+     */
     public void priceslider_mth(String currency, int down, int top) throws InterruptedException {
         int start = 0;
         int finish = 0;
@@ -132,6 +177,13 @@ public class SubCategoryPage extends BasePage {
         }
     }
 
+
+    /**
+     * Then  Verify that the user should be able to bring the products with selected "<currency>" between 105  and 480 in the price range
+     * @param currency
+     * @param down
+     * @param top
+     */
     public void verify_Slider(String currency, int down, int top) {
         waitFor(1);
         sort_by_loc.click();
@@ -159,27 +211,13 @@ public class SubCategoryPage extends BasePage {
 
         assertTrue(down_double > down && top_double < top);
     }
-    //********************Slider****************///
-
-    //***************Compare Icon***************//
-
-    @FindBy (xpath = "//*[@class='button-compare']")
-    public WebElement compareBtn;
-    @FindBy( css = ".alert.alert-fix.alert-success.alert-dismissible")
-    public  WebElement successAlertCompare;
-    //***************Compare Icon***************//
 
 
-//**********  SortBy   ******************
-
-    @FindBy(className = "form-control")
-    public WebElement defaultButton;
-
-    @FindBy(xpath = "//div[@class='product-item']")
-    public List<WebElement> productList;
-
-    @FindBy(xpath = "//p[@class='price']")
-    public List<WebElement> priceList;
+    /**
+     * Then the user should be able to sort the products by clicking "<Sort Tab>"
+     * @param sortTab
+     * @return
+     */
 
     public boolean sorting_Metod(String sortTab) {
 
@@ -217,12 +255,19 @@ public class SubCategoryPage extends BasePage {
     }
 
 
-    //**************** number of products on the sub category Page *************************
+    /**
+     * Then the user should be able to see the "<selectedCurrency>" under the product
+     * @param selectedCurrency
+     */
     public void verifyingProductCurrency(String selectedCurrency) {
         assertTrue(Driver.get().findElement(By.cssSelector(".price")).getText().contains(selectedCurrency));
         waitFor(1);
     }
 
+    /**
+     * Then the user can click show tab then the user see default number 12 of products in the sub category page
+     * @param defaultNumber
+     */
     public void verifyDefaultNumberShowTab(int defaultNumber) {
         WebElement selectShow = Driver.get().findElement(By.xpath("//select[@id='input-limit']"));
         Select select = new Select(selectShow);
@@ -233,6 +278,10 @@ public class SubCategoryPage extends BasePage {
 
     }
 
+    /**
+     *  Then the user should be able to see the same number of products according to "<selectShowTab>"
+     * @param selectShowTab
+     */
     public void verifyingReplaceShowTab(String selectShowTab) {
         WebElement selectShow = Driver.get().findElement(By.xpath("//select[@id='input-limit']"));
         Select select = new Select(selectShow);
@@ -274,10 +323,11 @@ public class SubCategoryPage extends BasePage {
     }
 
 
-//**************** number of products on the sub category Page*************************
-
-//*************************popular tags on the sub category page****************************
-
+    /**
+     * And the user should be able to see header as "<Header>"
+     * @param header
+     * @return
+     */
     public WebElement getSubCategoryHeader(String header) {
 
         WebElement subCategoryHeader = Driver.get().findElement(By.xpath("//h1[text()='" + header + "']"));
@@ -286,6 +336,10 @@ public class SubCategoryPage extends BasePage {
         return subCategoryHeader;
     }
 
+    /**
+     *And the user should see Popular Tags and select "<product>" in Popular Tags
+     * @param tag
+     */
     public void clickPopularTag(String tag) {
         WebElement popularTag = Driver.get().findElement(By.xpath("//a[text()='" + tag + "']"));
         scrollToElement(popularTag);
@@ -295,17 +349,15 @@ public class SubCategoryPage extends BasePage {
     }
 
 
-
-
-
     /**
      * bir üründen birden fazla adet shopping cart a eklenip eklenmedigini verify eder
+     *
      * @param numberProduct
      * @param productName
      * @param pageName
      * @return
      */
-    public boolean verifyProductNumber_met(String numberProduct,String productName, String pageName){
+    public boolean verifyProductNumber_met(String numberProduct, String productName, String pageName) {
         boolean verify = false;
         WebElement pageLoc = Driver.get().findElement(By.xpath("//a[text()='" + pageName + "']"));
         pageLoc.click();
@@ -314,8 +366,8 @@ public class SubCategoryPage extends BasePage {
         int actualNumber = Integer.parseInt(number);
         int expectedNumber = Integer.parseInt(numberProduct);
 
-        if (actualNumber>=expectedNumber){
-            verify=true;
+        if (actualNumber >= expectedNumber) {
+            verify = true;
         }
         System.out.println("verify = " + verify);
         return verify;
