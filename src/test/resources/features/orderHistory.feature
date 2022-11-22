@@ -17,6 +17,7 @@ Feature: As a user, I should be able to  see and modify  order history  by click
     Then verify that the user is on the "Order Information" page
     Then verify that  the id number of the purchased product is correct
 
+  @smoke
   @DGMARA-42
   Scenario: Verify that the user can re-order an item from their order history
     When the user navigates to "My Account" menu "Order History" tab

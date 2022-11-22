@@ -41,6 +41,7 @@ Feature: Cat-Subcategory-Quick View icon function
       | TV Accessories  | Belkin adapter cable                  | Add to Cart          | shopping cart      |
       | Networking      | ASUS PCE-AC51 - network adapter       | Add to Cart          | shopping cart      |
 
+  @smoke
   @DGMARA-35
   Scenario Outline: the user can increase the number of the products to add to the cart by filling the box from the quick view popup
     When the user hovers from "<subCategory>" over the product "<productName>"

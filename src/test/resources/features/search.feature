@@ -5,7 +5,7 @@
 
 @DGMARA-5
 Feature:  Search Function
-
+  @smoke
   @DGMARA-77
   Scenario Outline: Product is displayed when the user searches for the item on the website without login
     When The user is on the "<page>" page and click on search button without user login and enters product "<name>"

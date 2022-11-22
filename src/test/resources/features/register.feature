@@ -7,7 +7,7 @@ Feature:Register Function
 
   #  Warning: change email before running test. Because the account has been created in the previously run tests,
   #  it cannot be registered with the same account.
-
+  @smoke
   @DGMARA-26
   Scenario Outline:Register Function_positive scenario
     When The user enters valid "<firstname>" , "<lastname>" , "<email>", "<telephone>" ,"<password>" , "<confirm>"

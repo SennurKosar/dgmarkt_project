@@ -2,6 +2,7 @@
 @DGMARA-1
 Feature:  As a user, I should be able to login with valid credential
 
+  @smoke
 @DGMARA-81
   Scenario: The user can log in by entering the correct information
 

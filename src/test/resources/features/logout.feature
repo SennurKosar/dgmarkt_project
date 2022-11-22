@@ -1,4 +1,4 @@
-
+@smoke
 @DGMARA-2
 Feature: User-Log out Functionality
 
